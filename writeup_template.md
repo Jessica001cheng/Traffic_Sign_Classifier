@@ -182,7 +182,7 @@ The model was able to correctly guess 1 of the 5 traffic signs, which gives an a
 
 The code for making predictions on my final model is located in the 31th cell of the Ipython notebook.
 
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
+For the first image, the model is relatively sure that this is a Speed limit (30km/h), and the image does contain a Speed limit (100km/h). The top five soft max probabilities were
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
@@ -193,14 +193,45 @@ For the first image, the model is relatively sure that this is a stop sign (prob
 | 0.18				    | End of no passing by vehicles over 3.5 metric tons      							|
 
 
-For the second image ... 
-| Probability             |     Prediction                                | 
+For the second image Stop sign.  
+
+| Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| .60                     | Stop sign                                       | 
-| .20                     | U-turn                                         |
-| .05                    | Yield                                            |
-| .04                      | Bumpy Road                                     |
-| .01                    | Slippery Road                                  |
+| 8.42         			| Stop   									| 
+| 4.37    				| Keep right 										|
+| 2.79					| Speed limit (50km/h)											|
+| 1.97     			| Speed limit (30km/h)					 				|
+| -0.52				    | Speed limit (80km/h)      							|
+
+For the third image is Speed limit (30km/h).
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| 7.27         			| Keep right   									| 
+| 2.55    				| Roundabout mandatory 										|
+| 1.52					| General caution										|
+| 1.50     			| Speed limit (30km/h)					 				|
+| 1.18				    | Road work      							|
+
+For the 4th image is Turn left ahead.
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| 6.64         			| No entry   									| 
+| 4.35    				| Stop 										|
+| 3.17					| Roundabout mandatory											|
+| 2.07     			| Go straight or left					 				|
+| 2.01				    | Turn left ahead      							|
+
+For the 5th image is Speed limit (20km/h).
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| 9.96         			| Speed limit (20km/h)   									| 
+| 8.60    				| Speed limit (30km/h) 										|
+| 5.53					| Speed limit (120km/h)											|
+| 4.72     			| SSpeed limit (70km/h)					 				|
+| 2.75				    | Speed limit (80km/h)      							|
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 #### 1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
