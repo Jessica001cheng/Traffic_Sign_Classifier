@@ -158,7 +158,7 @@ The loss of trained set decrease in every epoch. And accuracy increase in every 
 
 Here are five German traffic signs that I found on the web:
 
-![alt text][image5 ![alt text][image6] ![alt text][image7] 
+![alt text][image5] ![alt text][image6] ![alt text][image7] 
 ![alt text][image8] ![alt text][image9]
 
 The 5th image might be difficult to classify because it is dark and have other  shape on it.
