@@ -19,15 +19,14 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/Visulization.png "Visualization"
-[image2]: ./examples/original.png "Original"
-[image3]: ./examples/reprocess.png "Grayscaling"
-[image4]: ./examples/random_noise.jpg "Random Noise"
-[image5]: ./examples/label07.ppm "Traffic Sign 1"
-[image6]: ./examples/label14.ppm "Traffic Sign 2"
-[image7]: ./examples/label01.ppm "Traffic Sign 3"
-[image8]: ./examples/label34.ppm "Traffic Sign 4"
-[image9]: ./examples/label00.ppm "Traffic Sign 5"
+[image1]: ./examples/visualization.jpg "Visualization"
+[image2]: ./examples/grayscale.jpg "Grayscaling"
+[image3]: ./examples/random_noise.jpg "Random Noise"
+[image4]: ./examples/placeholder.png "Traffic Sign 1"
+[image5]: ./examples/placeholder.png "Traffic Sign 2"
+[image6]: ./examples/placeholder.png "Traffic Sign 3"
+[image7]: ./examples/placeholder.png "Traffic Sign 4"
+[image8]: ./examples/placeholder.png "Traffic Sign 5"
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -54,7 +53,7 @@ signs data set:
 
 #### 2. Include an exploratory visualization of the dataset.
 
-Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
+Here is an exploratory visualization of the data set. It is a histogram chart showing how the data spread in train/validation/test dataset.
 
 ![alt text][image1]
 
@@ -62,15 +61,13 @@ Here is an exploratory visualization of the data set. It is a bar chart showing 
 
 #### 1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
 
-As a first step, I decided to convert the images to grayscale because:
-1.To classify traffic signs, shape are more important than colors. So grayscale image is enough for shape detection.
-2. Using grayscale image can reduce calculation amount and improve train speed.
+As a first step, I decided to convert the images to grayscale because 
+1. To classify traffic signs, shape are more important than colors. So grayscale image is enough for shape detection.
+2. Using grayscale image can reduce calculation amount and improve train speed. 
 
 Here is an example of a traffic sign image before and after grayscaling.
 
 ![alt text][image2]
-![alt text][image2]
-
 
 As a last step, I normalized the image data because with normalization, the output of the image is in range[-1.0,1.0]. The calulation will be easier.
 
@@ -92,63 +89,39 @@ My final model consisted of the following layers:
 | Layer         		|     Description	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | Input         		| 32x32x3 RGB image   							| 
-| Convolution 3x3     	| 1x1 stride, valid padding, outputs 28x28x6	|
+| Convolution 3x3     	| 1x1 stride, same padding, outputs 32x32x64 	|
 | RELU					|												|
-| Max pooling	      	| 2x2 stride,  outputs 14x14x6				|
-| Dropout              | keepprobe = 0.8               |
-| Convolution 3x3	    | 1x1 stride, valid padding, outputs 10x10x6                |
-| RELU                    |                                                |
-| Max pooling              | 2x2 stride,  outputs 5x5x6                |
-| Dropout              | keepprobe = 0.8               |
-| Fully connected		| 120       									|
-| RELU                    |    
-| Dropout              | keepprobe = 0.8               |
-| Fully connected        | 84                                           |
-| RELU                    |    
-| Dropout              | keepprobe = 0.8               |
-| Fully connected        | 43                                           |
+| Max pooling	      	| 2x2 stride,  outputs 16x16x64 				|
+| Convolution 3x3	    | etc.      									|
+| Fully connected		| etc.        									|
+| Softmax				| etc.        									|
+|						|												|
+|						|												|
  
 
 
 #### 3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
-To train the model, I used an LeNet-5 model:
-Optimizer: Adam Optimizer
-batch size: 128
-number of epochs: 10
-learning rate:0.001
+To train the model, I used an ....
 
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 My final model results were:
-* training set accuracy of 0.984
-* validation set accuracy of 0.944 
-* test set accuracy of 0.927
+* training set accuracy of ?
+* validation set accuracy of ? 
+* test set accuracy of ?
 
 If an iterative approach was chosen:
 * What was the first architecture that was tried and why was it chosen?
-I use the original LeNet-5 model without dropout layer. It is known to me with the last lesson
 * What were some problems with the initial architecture?
-But after I use, I find the train accuracy is high but validation accuracy is low. I think it is overfitted.
 * How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
-I add dropout layer after conv2D and full connection layer. Then change the keepout parameter. I find the accuracy trend of test and validation are similar.
-Also I find after the last full connection layer, if I use RELU activation, the accuracy of test and validation are both low. So I ask in Forum. Below is the link of the question:
-https://knowledge.udacity.com/questions/3839
-After I remove the RELU activation layer in the last full connection, the accuracy become high.
 * Which parameters were tuned? How were they adjusted and why?
-I change the dropout parameter from 0.4 to 0.8. I see when it is 0.8, the accuracy is highest.
 * What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
-1. convolution layer will extract the information(shape, line, etc) from images. So it can work well with this classifier problem.
-2. a dropout layer is to help to dropout some data randomly from the batch. So it will resolve the overfit problem. 
 
 If a well known architecture was chosen:
 * What architecture was chosen?
-LeNet-5 architecture.
 * Why did you believe it would be relevant to the traffic sign application?
-Because It did well on MNIST data set.
 * How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
-The loss of trained set decrease in every epoch. And accuracy increase in every epoch.
-
  
 
 ### Test a Model on New Images
@@ -157,10 +130,10 @@ The loss of trained set decrease in every epoch. And accuracy increase in every 
 
 Here are five German traffic signs that I found on the web:
 
-![alt text][image5 ![alt text][image6] ![alt text][image7] 
-![alt text][image8] ![alt text][image9]
+![alt text][image4] ![alt text][image5] ![alt text][image6] 
+![alt text][image7] ![alt text][image8]
 
-The 5th image might be difficult to classify because it is dark and have other  shape on it.
+The first image might be difficult to classify because ...
 
 #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
@@ -168,38 +141,31 @@ Here are the results of the prediction:
 
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Speed limit (100km/h)     		| Speed limit (30km/h)									| 
-| Stop     			| Stop 										|
-| Speed limit (30km/h)					| Keep right											|
-| Turn left ahead      		| No entry					 				|
-| Speed limit (20km/h)			| Speed limit (20km/h)    							|
+| Stop Sign      		| Stop sign   									| 
+| U-turn     			| U-turn 										|
+| Yield					| Yield											|
+| 100 km/h	      		| Bumpy Road					 				|
+| Slippery Road			| Slippery Road      							|
 
 
-The model was able to correctly guess 1 of the 5 traffic signs, which gives an accuracy of 20%. This compares favorably to the accuracy on the test set of ...
+The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
-The code for making predictions on my final model is located in the 31th cell of the Ipython notebook.
+The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
 
 For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| 2.42         			| speed limit (30km/h)   									| 
-| 1.04    				| Roundabout mandatory 										|
-| 0.71					| End of speed limit (80km/h)											|
-| 0.68     			| Speed limit (80km/h)					 				|
-| 0.18				    | End of no passing by vehicles over 3.5 metric tons      							|
+| .60         			| Stop sign   									| 
+| .20     				| U-turn 										|
+| .05					| Yield											|
+| .04	      			| Bumpy Road					 				|
+| .01				    | Slippery Road      							|
 
 
 For the second image ... 
-| Probability             |     Prediction                                | 
-|:---------------------:|:---------------------------------------------:| 
-| .60                     | Stop sign                                       | 
-| .20                     | U-turn                                         |
-| .05                    | Yield                                            |
-| .04                      | Bumpy Road                                     |
-| .01                    | Slippery Road                                  |
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 #### 1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
